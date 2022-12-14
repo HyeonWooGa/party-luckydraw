@@ -7,7 +7,7 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", typeConversionPolicy = ReportingPolicy.IGNORE)
 public interface UserMapper {
     @Mapping(source = "userName.userName", target = "name")
-    User toUser(UserDto.userName userName);
+    User toUser(UserDto.RequestUserSimpleUser userName);
 
     @Mapping(source = "user.id", target = "userId")
     UserDto.ResponseUserId toUserId(User user);
