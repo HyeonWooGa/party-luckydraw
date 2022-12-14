@@ -15,7 +15,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
-    public UserDto.ResponseUserId registerUserName(UserDto.userName userName) {
+    public UserDto.ResponseUserId registerUserName(UserDto.RequestUserSimpleUser userName) {
         User user = userMapper.toUser(userName);
         userRepository.save(user);
         return userMapper.toUserId(user);
