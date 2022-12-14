@@ -9,8 +9,9 @@ public class UserDto {
     @Builder
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class userName {
+    public static class RequestUserSimpleUser {
         private String userName;
+        private String phone;
     }
 
     @Getter
@@ -28,5 +29,6 @@ public class UserDto {
     public static class ResponseSimpleUser {
         private Long userId;
         private String userName;
+        private String phone;
     }
 }
