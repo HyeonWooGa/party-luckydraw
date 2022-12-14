@@ -15,7 +15,7 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto.ResponseUserId registerUserName(@RequestBody UserDto.userName userName) {
+    public UserDto.ResponseUserId registerUserName(@RequestBody UserDto.RequestUserSimpleUser userName) {
         UserDto.ResponseUserId responseUserId = userService.registerUserName(userName);
         return responseUserId;
     }
