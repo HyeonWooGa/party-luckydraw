@@ -10,7 +10,7 @@ public class UserDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
     public static class RequestUserSimpleUser {
-        private String userName;
+        private String username;
         private String phone;
     }
 
@@ -26,9 +26,17 @@ public class UserDto {
     @Builder
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class RequestUsername {
+        private String username;
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    @AllArgsConstructor(access = AccessLevel.PROTECTED)
     public static class ResponseSimpleUser {
         private Long userId;
-        private String userName;
+        private String username;
         private String phone;
     }
 }
