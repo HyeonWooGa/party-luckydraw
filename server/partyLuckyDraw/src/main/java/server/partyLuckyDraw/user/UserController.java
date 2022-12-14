@@ -15,8 +15,8 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto.ResponseUserId registerUserName(@RequestBody UserDto.RequestUserSimpleUser userName) {
-        UserDto.ResponseUserId responseUserId = userService.registerUserName(userName);
+    public UserDto.ResponseUserId registerUserName(@RequestBody UserDto.RequestUserSimpleUser simpleUser) {
+        UserDto.ResponseUserId responseUserId = userService.registerUserName(simpleUser);
         return responseUserId;
     }
 
@@ -32,4 +32,15 @@ public class UserController {
         userService.deleteUser(userId);
     }
 
+    @GetMapping("/randoms")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDto.ResponseSimpleUser randomPickUser() {
+        return userService.findRandomPickUser();
+    }
+
+    @GetMapping("/names")
+    @ResponseStatus(HttpStatus.OK)
+    public List<UserDto.ResponseSimpleUser> findSavedUser(@RequestBody UserDto.RequestUsername username) {
+        return userService.checkSavedUserByName(username);
+    }
 }
