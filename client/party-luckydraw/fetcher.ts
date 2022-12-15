@@ -49,10 +49,9 @@ export const doLuckyDraw = async (
 export const deleteParticipant = async (
   userId: number,
   username: string,
-  phone: string,
   setRendering: Dispatch<SetStateAction<boolean>>
 ) => {
-  if (window.confirm(`${username} (${phone})님을 럭키드로우에서 제외합니까?`)) {
+  if (window.confirm(`${username} 님을 럭키드로우에서 제외합니까?`)) {
     try {
       await axios.delete(`/users/${userId}`);
       setRendering((prev) => !prev);
