@@ -1,6 +1,11 @@
 import { NextPage } from "next";
 import { FormEvent, useEffect, useState } from "react";
-import { doLuckyDraw, getParticipants, pushParticipants } from "../fetcher";
+import {
+  deleteParticipant,
+  doLuckyDraw,
+  getParticipants,
+  pushParticipants,
+} from "../fetcher";
 import { motion, AnimatePresence } from "framer-motion";
 
 export interface IParticipant {
@@ -57,6 +62,10 @@ const Home: NextPage = () => {
     await doLuckyDraw(setPersonWonDraw, setPhoneWonDraw);
     setLayoutId("1");
   };
+
+  const onClickDelete = (userId: number, userName: string, phone: string) => {
+    deleteParticipant(userId, userName, phone, setRendering);
+  };
   return (
     <motion.main className="w-[1080px] mx-auto my-8 flex flex-col gap-10">
       <section className="w-[1080px] py-8 bg-[#F2E5E5] rounded-xl flex justify-center">
@@ -91,7 +100,16 @@ const Home: NextPage = () => {
       <section className="w-[1080px] py-8 bg-[#F2E5E5] rounded-xl flex justify-center">
         <div className="grid grid-cols-6 gap-8">
           {participants?.map((participant) => (
-            <div className="bg-[#E8C4C4] py-2 px-4 rounded-xl">{`${participant.username} (${participant.phone})`}</div>
+            <button
+              onClick={() =>
+                onClickDelete(
+                  participant.userId,
+                  participant.username,
+                  participant.phone
+                )
+              }
+              className="bg-[#E8C4C4] py-2 px-4 rounded-xl"
+            >{`${participant.username} (${participant.phone})`}</button>
           ))}
         </div>
       </section>
