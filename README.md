@@ -24,7 +24,10 @@
 ### 백엔드
 - Java
 - SpringBoot
+- JPA
+- Mapstruct
 - AWS EC2
+- AWS RDS
 
 ---
 
